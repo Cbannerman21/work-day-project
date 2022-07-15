@@ -46,7 +46,7 @@ function color() {
     })
 };
 
-// storing user input in localStorage so it is available after refresh
+// creating a function to pull userInput data from the appropriate time slots and sending them to localStorage
 
 function storage() {
     var store9 = JSON.parse(localStorage.getItem("9AM"))
@@ -69,7 +69,7 @@ function storage() {
     four.val(store4);
     five.val(store5);
 };
-
+// code for saving events to local storage after onClick event
 $(document).ready(function() {
     $(".saveBtn").on("click", function() {
         userInput = $(this).siblings(".form-control").val().trim();
@@ -82,6 +82,6 @@ $(document).ready(function() {
     color();
     });
 
-
+//calling on local storage to load in saved user input data
     loadUserInput();
 
