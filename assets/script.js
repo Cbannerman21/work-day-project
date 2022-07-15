@@ -3,8 +3,13 @@
 var currentDate = moment().format('ddd') + "" + moment().format("Do MMM YYYY");
 var hour = moment().hour();
 
-// adding time variables to allow the checking if time has passed
+// loading saved tasks from local storage
+var loadUserInput = function() {
+    userInput = JSON.parse(localStorage.getItem("userInput"));
+    
+};
 
+// adding time variables to allow the checking if time has passed
 var nine = $("#9");
 var ten = $("#10");
 var eleven = $("#11");
@@ -15,7 +20,7 @@ var three = $("#15");
 var four = $("#16");
 var five = $("#17");
 
-var userInput;
+var tasks;
 var hours;
 
 
@@ -63,4 +68,20 @@ function storage() {
     three.val(store3);
     four.val(store4);
     five.val(store5);
-}
+};
+
+$(document).ready(function() {
+    $(".saveBtn").on("click", function() {
+        userInput = $(this).siblings(".form-control").val().trim();
+        hours = $(this).siblings(".input-group-prepend").text().trim();
+        localStorage.setItem(hours, JSON.stringify(userInput));
+        
+    })
+    
+    storage();
+    color();
+    });
+
+
+    loadUserInput();
+
